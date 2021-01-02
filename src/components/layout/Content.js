@@ -1,7 +1,7 @@
 import React from 'react';
 import { Sidebar } from './Sidebar';
 
-export default Content = () => (
+export const Content = () => (
     <section>
         <Sidebar></Sidebar>
     </section>

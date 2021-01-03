@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import {useSelectedProjectValue, useProjectsValue} from '../context';
+import PropTypes from 'prop-types';
+import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { IndividualProject } from './IndividualProject';
 
-export const Projects = ({ activeValue = null}) => {
-    const [active, setActive] = useState(activeValue);
-    const {setSelectedProject} = useSelectedProjectValue();
-    const {projects} = useProjectsValue();
+export const Projects = ({ activeValue = null }) => {
+  const [active, setActive] = useState(activeValue);
+  const { setSelectedProject } = useSelectedProjectValue();
+  const { projects } = useProjectsValue();
 
-    return (
-        projects &&
-        projects.map(project => (
-            <li
+  return (
+    projects &&
+    projects.map((project) => (
+      <li
         key={project.projectId}
         data-testid="project-action-parent"
         data-doc-id={project.docId}
@@ -36,10 +37,9 @@ export const Projects = ({ activeValue = null}) => {
             }
           }}
         >
+          <IndividualProject project={project} />
         </div>
-
-        <IndividualProject project={project}></IndividualProject>
       </li>
-        ))
-    )
-}
+    ))
+  );
+};

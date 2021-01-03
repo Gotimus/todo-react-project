@@ -9,8 +9,10 @@ export const Header = () => {
             </div>
             <div className="settings">
                 <ul>
-                    <li>+</li>
-                    <FaPizzaSlice></FaPizzaSlice>
+                    <li className="settings__add">+</li>
+                    <li className="settings__darkmode">
+                        <FaPizzaSlice></FaPizzaSlice>
+                    </li>
                 </ul>
             </div>
         </nav>

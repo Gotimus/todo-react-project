@@ -1,6 +1,5 @@
 import React from 'react';
 import {firebase} from '../firebase';
-import {Checkbox} from '../components/Checkbox';
 
 export const Checkbox = ({id}) => {
     const archiveTask = () => {

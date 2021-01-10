@@ -11,13 +11,22 @@ export const ProjectOverlay = ({setProject, showProjectOverlay, setShowProjectOv
                     {projects.map(project => (
                     <li
                       key={project.projectId}
-                      data-testid="project-overlay-action"
-                      onClick={()=>{
+                      data-testid="project-overlay-action">
+                          <div
+                           onClick={()=>{
+                            setProject(project.projectId);
+                            setShowProjectOverlay(false);
+                        }}
+                        onKeyDown={()=>{
                           setProject(project.projectId);
                           setShowProjectOverlay(false);
-                      }}
-                      >
+                        }}
+                        role="button"
+                        tabIndex={0}
+                          >
+
                           {project.name}
+                          </div>
                       </li>
                     ))}
                 </ul>

@@ -4,6 +4,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
+import { ProjectOverlay } from './ProjectOverlay';
+import { TaskDate } from './TaskDate';
 
 export const AddTask = ({
   showAddTaskMain = true,
@@ -104,8 +106,16 @@ export const AddTask = ({
               </div>
             </>
           )}
-          <p>Project Overlay here</p>
-          <p>TaskDate here</p>
+          <ProjectOverlay
+           setProject={setProject}
+           showProjectOverlay={showProjectOverlay}
+           setShowProjectOverlay={setShowProjectOverlay}
+          />
+          <TaskDate 
+            setTaskDate={setTaskDate}
+            showTaskDate={showTaskDate}
+            setShowTaskDate={setShowTaskDate}
+            />
           <input
             className="add-task__content"
             aria-label="Enter your task"
@@ -175,4 +185,4 @@ export const AddTask = ({
       )}
     </div>
   );
-};
+}

@@ -13,7 +13,7 @@ export const AddProject = ({ shouldShow = false }) => {
 
   const addProject = () =>
     projectName &&
-    firebase
+    firebase//okej 
       .firestore()
       .collection('projects')
       .add({

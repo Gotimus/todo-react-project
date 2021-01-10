@@ -21,6 +21,7 @@ export const Sidebar = () => {
           data-testid="inbox"
           className={active === 'inbox' ? 'active' : undefined}
         >
+       
           <div
             data-testid="inbox-action"
             aria-label="Show inbox tasks"

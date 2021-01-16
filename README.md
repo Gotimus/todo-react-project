@@ -20,7 +20,8 @@ This is a simplified version of To-Do app. You can create projects, add your sim
 
 ## Technologies
 Back-end:
-* Cloud Firestore / Firebase - version 8.2.1
+* REST API from Cloud Firestore - version 8.2.1
+* Firebase database - version 8.2.1
 
 Front-end:
 * Bootstrap - version 4.5.3

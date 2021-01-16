@@ -1,84 +1,80 @@
 import React from 'react';
 import moment from 'moment';
-import { FaSpaceShuttle } from 'react-icons/fa';
+import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 
-export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate}) => showTaskDate && (
-    <div className="task-data" data-testid="task-date-overlay">
-        <ul className="task-dae__list">
-            <li
+export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
+  showTaskDate && (
+    <div className="task-date" data-testid="task-date-overlay">
+      <ul className="task-date__list">
+        <li>
+          <div
             onClick={() => {
+              setShowTaskDate(false);
+              setTaskDate(moment().format('DD/MM/YYYY'));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
                 setShowTaskDate(false);
                 setTaskDate(moment().format('DD/MM/YYYY'));
+              }
             }}
-            data-testid="task-date-overlay"
-        >
-            <div 
-            onClick={() => {
-                setShowTaskDate(false);
-                setTaskDate(moment().format('DD/MM/YYYY'));
-            }}
-            onKeydown={() => {
-                setShowTaskDate(false);
-                setTaskDate(moment().format('DD/MM/YYYY'));
-            }}
+            data-testid="task-date-today"
             tabIndex={0}
+            aria-label="Select today as the task date"
             role="button"
-            >
+          >
             <span>
-                <FaSpaceShuttle />
+              <FaSpaceShuttle />
             </span>
             <span>Today</span>
-            </div>
-            </li>
-            <li
-            
+          </div>
+        </li>
+        <li>
+          <div
+            onClick={() => {
+              setShowTaskDate(false);
+              setTaskDate(moment().add(1, 'day').format('DD/MM/YYYY'));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setShowTaskDate(false);
+                setTaskDate(moment().add(1, 'day').format('DD/MM/YYYY'));
+              }
+            }}
             data-testid="task-date-tomorrow"
-        >
-            <div
-             onClick={() => {
-                setShowTaskDate(false);
-                setTaskDate(moment().add(1, 'day').format('DD/MM/YYYY'));
-            }}
-            onKeydown={() => {
-                setShowTaskDate(false);
-                setTaskDate(moment().add(1, 'day').format('DD/MM/YYYY'));
-            }}
             role="button"
             tabIndex={0}
-            >
-           
+            aria-label="Select tomorrow as the task date"
+          >
             <span>
-                <FaSun />
+              <FaSun />
             </span>
             <span>Tomorrow</span>
-
-            </li>
-            <li
-            
-            data-testid="task-date-next-week"
-        >
-            <div 
+          </div>
+        </li>
+        <li>
+          <div
             onClick={() => {
-                setShowTaskDate(false);
-                setTaskDate(moment().add(7, 'days')
-                .format('DD/MM/YYYY'));
+              setShowTaskDate(false);
+              setTaskDate(moment().add(7, 'days').format('DD/MM/YYYY'));
             }}
-            onKeydown={() => {
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
                 setShowTaskDate(false);
-                setTaskDate(moment().add(7, 'days')
-                .format('DD/MM/YYYY'));
+                setTaskDate(moment().add(7, 'days').format('DD/MM/YYYY'));
+              }
             }}
+            data-testid="task-date-next-week"
+            aria-label="Select next week as the task date"
             tabIndex={0}
             role="button"
-            >
+          >
             <span>
-                <FaRegPaperPlane />
+              <FaRegPaperPlane />
             </span>
             <span>Next week</span>
-            </div>
-            </li>
-
-
-        </ul>
+          </div>
+        </li>
+      </ul>
     </div>
-);
+  );

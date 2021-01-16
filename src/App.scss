@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+@import "~bootstrap/scss/bootstrap";
 
 // General Settings
 html {
@@ -30,7 +31,7 @@ ul {
 // Variables
 $generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
-$generic-bg: #db4c3f;
+$generic-bg: green;
 
 /* Mixins
   ============================================ */
@@ -138,12 +139,24 @@ $generic-bg: #db4c3f;
     background-color: #282828;
     border-color: transparent;
   }
+
+  .navbar {
+    background-color: #282828 !important;
+  }
+
+  #basic-navbar-nav {
+    background-color: #282828;
+  }
+
+  .navbar-toggler {
+    background-color: white;
+  }
 }
 
 /* Header
   ============================================ */
 header {
-  border-bottom: solid 1px #ca2100;
+  border-bottom: solid 1px green;
   background-color: $generic-bg;
   -webkit-transition: height 200ms ease-in;
   transition: height 200ms ease-in;
@@ -155,8 +168,17 @@ header {
   top: 0;
   width: 100%;
 
-  @include mq('900px') {
+  @include mq('992px') {
     padding: 0 10px;
+
+    #basic-navbar-nav {
+      height: 40px;
+      border-radius: 5px;
+    }
+
+    .settings {
+      margin-left: 45%;
+    }
   }
 
   nav {
@@ -179,7 +201,9 @@ header {
     div {
       &.logo {
         padding-left: 8px;
+        padding-right: 20px;
         grid-area: 1 / 1;
+        color: white;
 
         img {
           width: 24px;
@@ -241,7 +265,79 @@ header {
         }
       }
     }
+
+    span {
+      &.settings {
+        grid-area: 1 / 2;
+        text-align: right;
+      }
+
+      ul li {
+        @include va;
+
+          list-style-type: none;
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          vertical-align: middle;
+          float: left;
+
+          &:hover {
+            border-radius: 3px;
+            background-color: rgba(255,255,255,0.2);
+          }
+
+          &.settings__add {
+            margin-right: 15px;
+            font-size: 30px;
+
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+            }
+          }
+
+          &.settings__darkmode {
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+
+              svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+
+          }
+      }
+    }
   }
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar {
+  background-color: green !important;
+}
+
+#basic-navbar-nav {
+  background-color: green;
+}
+
+.navbar-toggler-icon {
+  height: 20px;
+}
+
+.navbar-toggler {
+  background-color: white;
 }
 
 /* Sidebar
@@ -257,8 +353,9 @@ header {
   border-right: $generic-border;
   background-color: #fafafa;
 
-  @include mq('900px') {
-    display: none;
+  @include mq('992px') {
+    // display: none;
+    width: 150px;
   }
 
   li {
@@ -471,8 +568,8 @@ header {
   padding-top: 80px;
   padding-bottom: 84px;
 
-  @include mq('900px') {
-    margin-left: 0;
+  @include mq('992px') {
+    margin-left: 150px;
     width: auto;
   }
 

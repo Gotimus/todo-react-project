@@ -1,22 +1,27 @@
-import React { useState } from 'react';
-import { Content } from './components/layout/Content';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Header } from './components/layout/Header';
-import {ProjectsProvider, SelectedProjectProvider} from './context';
+import { Content } from './components/layout/Content';
+import { ProjectsProvider, SelectedProjectProvider } from './context';
 
 export const App = ({ darkModeDefault = false }) => {
   const [darkMode, setDarkMode] = useState(darkModeDefault);
 
   return (
     <SelectedProjectProvider>
-    <ProjectsProvider>
-   <main
-   data-testid="applcation"
-   className={darkMode ? 'darkmode' : undefined}
-   >
-      <Header darkode={darkMode} setDarkMode={setDarkMode} />
-      <Content></Content>
-    </main>
-    </ProjectsProvider>
+      <ProjectsProvider>
+        <main
+          data-testid="application"
+          className={darkMode ? 'darkmode' : undefined}
+        >
+          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Content />
+        </main>
+      </ProjectsProvider>
     </SelectedProjectProvider>
   );
+};
+
+App.propTypes = {
+  darkModeDefault: PropTypes.bool,
 };

@@ -43,7 +43,7 @@ export const AddTask = ({
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: 'jlIFXIwyAL3tzHMtzRbw',
+          userId: 'VxlMQPQHEI',
         })
         .then(() => {
           setTask('');
@@ -107,15 +107,15 @@ export const AddTask = ({
             </>
           )}
           <ProjectOverlay
-           setProject={setProject}
-           showProjectOverlay={showProjectOverlay}
-           setShowProjectOverlay={setShowProjectOverlay}
+            setProject={setProject}
+            showProjectOverlay={showProjectOverlay}
+            setShowProjectOverlay={setShowProjectOverlay}
           />
-          <TaskDate 
+          <TaskDate
             setTaskDate={setTaskDate}
             showTaskDate={showTaskDate}
             setShowTaskDate={setShowTaskDate}
-            />
+          />
           <input
             className="add-task__content"
             aria-label="Enter your task"
@@ -185,4 +185,11 @@ export const AddTask = ({
       )}
     </div>
   );
-}
+};
+
+AddTask.propTypes = {
+  showAddTaskMain: PropTypes.bool,
+  shouldShowMain: PropTypes.bool,
+  showQuickAddTask: PropTypes.bool,
+  setShowQuickAddTask: PropTypes.func,
+};

@@ -65,3 +65,7 @@ export const IndividualProject = ({ project }) => {
     </>
   );
 };
+
+IndividualProject.propTypes = {
+  project: PropTypes.object.isRequired,
+};

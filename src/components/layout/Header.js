@@ -1,58 +1,106 @@
 import React, { useState } from 'react';
-import { FaPizzaSlice } from 'react-icons/fa';
+import { FaRegLightbulb } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import { AddTask } from '../AddTask';
+import Navbar from 'react-bootstrap/Navbar';
+// import NavbarBrand from 'react-bootstrap/NavbarBrand';
+// import NavbarToggle from 'react-bootstrap/NavbarToggle';
+// import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
+// import NavLink from 'react-bootstrap/NavLink';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
 
-export const Header = ({ darkMode, setDarkMode}) => {
-    const [shouldShowMain, setShouldShowMain] = useState(false);
-    const [showQuickAddTask, setShowQuickAddTask] = useState(false);
+export const Header = ({ darkMode, setDarkMode }) => {
+  const [shouldShowMain, setShouldShowMain] = useState(false);
+  const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
-    return (<header className="header" data-testid="header">
-        <nav>
-            <div className="logo">
-                <img src="/images/logo.png" alt="TodoApp"></img>
-            </div>
-            <div className="settings">
-                <ul>
-                    <li 
-                    data-testid="quick-add-task-action"
-                    className="settings__add">
-                    <button
-                        aria-label="Quick Add Task"
-                        type="button"
-                    onClick={() => {setShowQuickAddTask(true); setShouldShowMain(true);
-                       
-                    }}
-                    onKeyDown={() =>{
-                        setShowQuickAddTasks(true);
-                        setShouldShowMain(true);
-                    }}
-                >
-                    +
-                    </button>
-                    </li>
-                    <li
-                        data-testid="dark-mode-action"
-                        className="settings__darkmode"
-                        >
-                        <button
-                        aria-label="Darkmode on/off"
-                        type="button" 
-                        onClick={()) => setDarkMode(!darkMode){'}'}
-                        onKeyDown={()) => setDarkMode(!darkMode){'}'}
-                
-                    >
-                        <FaPizzaSlice></FaPizzaSlice>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+  return (
+    <header className="header" data-testid="header">
+      {/* <nav>
+        <div className="logo">
+          <img src="/images/logo.png" alt="Todo React App" />
+          <span className="logoTitle">
+            Todo React App
+        </span>
+        </div>
+        <div className="settings">
+          <ul>
+            <li className="settings__add">
+              <button
+                data-testid="quick-add-task-action"
+                aria-label="Quick add task"
+                type="button"
+                onClick={() => {
+                  setShowQuickAddTask(true);
+                  setShouldShowMain(true);
+                }}
+              >
+                +
+              </button>
+            </li>
+            <li className="settings__darkmode">
+              <button
+                data-testid="dark-mode-action"
+                aria-label="Darkmode on/off"
+                type="button"
+                onClick={() => setDarkMode(!darkMode)}
+              >
+                <FaRegLightbulb />
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav> */}
+      <Navbar bg="dark" expand="lg">
+      <div className="logo">
+        <img src="/images/logo.png" alt="Todo React App" />
+      </div>
+        <Navbar.Brand>Todo React App</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+            <span className="settings">
+          <ul>
+            <li className="settings__add">
+              <button
+                data-testid="quick-add-task-action"
+                aria-label="Quick add task"
+                type="button"
+                onClick={() => {
+                  setShowQuickAddTask(true);
+                  setShouldShowMain(true);
+                }}
+              >
+                +
+              </button>
+            </li>
+            <li className="settings__darkmode">
+              <button
+                data-testid="dark-mode-action"
+                aria-label="Darkmode on/off"
+                type="button"
+                onClick={() => setDarkMode(!darkMode)}
+              >
+                <FaRegLightbulb />
+              </button>
+            </li>
+          </ul>
+        </span>
+        </Nav>
+        </Navbar.Collapse>
+    </Navbar>
 
-        <AddTask
-            showAddTaskMain={false}
-            shouldShowMain={shouldShowMain}
-            showQuickAddTask={showQuickAddTask}
-            setShowQuickAddTask={setShowQuickAddTask}
-            />
+      <AddTask
+        showAddTaskMain={false}
+        shouldShowMain={shouldShowMain}
+        showQuickAddTask={showQuickAddTask}
+        setShowQuickAddTask={setShowQuickAddTask}
+      />
     </header>
-    );
+  );
 };
+
+Header.propTypes = {
+    darkMode: PropTypes.bool.isRequired,
+    setDarkMode: PropTypes.func.isRequired,
+  };

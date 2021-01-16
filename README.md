@@ -1,4 +1,4 @@
-# StudentBook
+# To-Do React App
 > A simplified version of To-Do app created in React
 
 ## Table of contents

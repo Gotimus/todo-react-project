@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { firebase } from '../firebase';
+import axios from 'axios';
 
 export const Checkbox = ({ id, taskDesc }) => {
   const archiveTask = () => {
-    firebase.firestore().collection('tasks').doc(id).update({
-      archived: true,
-    });
+    axios.put("/task", {id: id, archived: true}, {});
   };
 
   return (

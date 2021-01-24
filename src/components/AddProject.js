@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { firebase } from '../firebase';
 import { generatePushId } from '../helpers';
 import { useProjectsValue } from '../context';
+import axios from 'axios';
 
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
@@ -13,14 +14,7 @@ export const AddProject = ({ shouldShow = false }) => {
 
   const addProject = () =>
     projectName &&
-    firebase
-      .firestore()
-      .collection('projects')
-      .add({
-        projectId,
-        name: projectName,
-        userId: 'VxlMQPQHEI',
-      })
+    axios.post("/project", {projectName, projectId}, {})
       .then(() => {
         setProjects([...projects]);
         setProjectName('');

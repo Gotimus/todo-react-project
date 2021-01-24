@@ -6,6 +6,7 @@ import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
 import { ProjectOverlay } from './ProjectOverlay';
 import { TaskDate } from './TaskDate';
+import axios from 'axios';
 
 export const AddTask = ({
   showAddTaskMain = true,
@@ -35,16 +36,7 @@ export const AddTask = ({
     return (
       task &&
       projectId &&
-      firebase
-        .firestore()
-        .collection('tasks')
-        .add({
-          archived: false,
-          projectId,
-          task,
-          date: collatedDate || taskDate,
-          userId: 'VxlMQPQHEI',
-        })
+      axios.post("/task", {projectId, task, collatedDate, taskDate}, {})
         .then(() => {
           setTask('');
           setProject('');

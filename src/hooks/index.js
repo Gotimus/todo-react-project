@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import moment from 'moment';
 import { firebase } from '../firebase';
 import { collatedTasksExist } from '../helpers';
+import axios from 'axios';
 
 export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
@@ -55,21 +56,13 @@ export const useProjects = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        firebase.firestore()
-        .collection('projects')
-        .where('userId', '==', 'VxlMQPQHEI')
-        .orderBy('projectId')
-        .get()
-        .then(snapshot => {
-            const allProjects = snapshot.docs.map(project => ({
-                ...project.data(),
-                docId: project.id
-            }))
-
-            if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
-                setProjects(allProjects);
+        axios.get("/project", {})
+        .then(allProjects => {
+            console.log(allProjects);
+            if (JSON.stringify(allProjects.data) !== JSON.stringify(projects)) {
+                setProjects(allProjects.data);
             }
-        })
+        });
 
         
     }, [projects]);

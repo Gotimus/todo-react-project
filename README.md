@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## General info
-This is a simplified version of To-Do app. You can create projects, add your simple tasks, assign them to the projects and plan them for today/next 7 days. This web application is fully responsible. There is also a dark mode feature! :)
+This is a simplified version of To-Do app. You can create projects, add your simple tasks, assign them to the projects and plan them for today/next 7 days. This web application is fully responsible and uses React hooks. There is also a dark mode feature! :)
 
 ## Screenshots
 <p align="center">
